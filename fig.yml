@@ -1,0 +1,17 @@
+reader:
+  build: reader
+  command: python run.py
+  volumes:
+   - reader:/app
+  links:
+   - rabbit
+  environment:
+   CONSUMER_KEY: <replaceme>
+   CONSUMER_SECRET: <replaceme>
+   ACCESS_KEY: <replaceme>
+   ACCESS_SECRET: <replaceme>
+rabbit:                                                                                               
+  image: mikaelhg/docker-rabbitmq                                                                     
+  ports:                                                                                              
+   - 5672:5672                                                                                        
+   - 8888:15672
