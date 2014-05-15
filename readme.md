@@ -47,8 +47,8 @@ $ fig scale reader=4
 
 Watch the messages per second rise!
 
-Tasks
------
+Roadmap
+-------
 
  - [x] Pipe Twitter stream to a message queue (`fig up -d reader`)
  - [ ] Pull from queue and parse data (`fig up worker`)
