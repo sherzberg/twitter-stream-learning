@@ -15,3 +15,9 @@ rabbit:
   ports:                                                                                              
    - 5672:5672                                                                                        
    - 8888:15672
+logstash:
+  image: sherzberg/logstash
+  ports:
+   - 9200:9200
+   - 9300:9300
+   - 9292:9292
