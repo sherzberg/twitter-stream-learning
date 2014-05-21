@@ -36,13 +36,13 @@ Navigate to `http://localhost:8888` to view the running
 rabbitmq instance.
 
 ```bash
-$ fig up -d reader
+$ fig up -d twitter
 ```
 
 On the rabbitmq webpage, view the messages per second.
 
 ```bash
-$ fig scale reader=4
+$ fig scale twitter=4
 ```
 
 Watch the messages per second rise!
@@ -50,6 +50,6 @@ Watch the messages per second rise!
 Roadmap
 -------
 
- - [x] Pipe Twitter stream to a message queue (`fig up -d reader`)
+ - [x] Pipe Twitter stream to a message queue (`fig up -d twitter`)
  - [ ] Pull from queue and parse data (`fig up worker`)
  - [ ] Graph live data
