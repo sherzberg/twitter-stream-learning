@@ -1,8 +1,8 @@
 twitter:
-  build: twitter
+  build: worker
   command: python run.py
   volumes:
-   - twitter:/app
+   - worker:/app
   links:
    - rabbit
   environment:
@@ -10,10 +10,19 @@ twitter:
    CONSUMER_SECRET: <replaceme>
    ACCESS_KEY: <replaceme>
    ACCESS_SECRET: <replaceme>
-rabbit:                                                                                               
-  image: mikaelhg/docker-rabbitmq                                                                     
-  ports:                                                                                              
-   - 5672:5672                                                                                        
+worker:
+  build: worker
+  command: celery -A tasks worker --loglevel=debug
+  volumes:
+   - worker:/app
+  links:
+   - rabbit
+  environment:
+   C_FORCE_ROOT: true
+rabbit:
+  image: mikaelhg/docker-rabbitmq
+  ports:
+   - 5672:5672
    - 8888:15672
 logstash:
   image: sherzberg/logstash
