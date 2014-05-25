@@ -12,21 +12,26 @@ twitter:
    ACCESS_SECRET: <replaceme>
 worker:
   build: worker
-  command: celery -A tasks worker --loglevel=debug
+  command: celery -A tasks worker --loglevel=info
   volumes:
    - worker:/app
   links:
    - rabbit
+   - logstash
   environment:
    C_FORCE_ROOT: true
 rabbit:
   image: mikaelhg/docker-rabbitmq
   ports:
    - 5672:5672
-   - 8888:15672
+   - 15672:15672
 logstash:
-  image: sherzberg/logstash
+  build: logstash/
+  command: run
+  volumes:
+   - logstash/templates:/opt/templates
   ports:
    - 9200:9200
    - 9300:9300
    - 9292:9292
+   - 5555:5555

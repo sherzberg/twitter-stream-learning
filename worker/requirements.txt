@@ -1,2 +1,5 @@
 tweepy
 celery
+nose
+python-dateutil
+pytz

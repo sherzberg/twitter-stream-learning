@@ -17,7 +17,7 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 class RabbitStreamListener(tweepy.StreamListener):
 
     def on_status(self, status):
-        tasks.process_tweet.delay(json.dumps(json.dumps(status._json)))
+        tasks.process_tweet.delay(json.dumps(status._json))
 
 
 def run():

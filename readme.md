@@ -39,10 +39,37 @@ rabbitmq instance.
 $ fig up -d twitter
 ```
 
-On the rabbitmq webpage, view the messages per second.
+On the rabbitmq [webpage](http://localhost:15672), view the messages per second.
+
+To start viewing the messages, we first need to start the logstash container:
+
+```bash
+$ fig up -d logstash
+```
+
+You can view the processed messages by navigating to the logstash [webpage](http://localhost:9292/index.html#/dashboard/file/logstash.json)
+
+Now start the workers that process the rabbitmq messages:
+
+```bash
+$ fig up worker
+```
+
+If you refresh the logstash page, you should see lots of messages.
+
+Optional scaling:
+-----------------
+
+Scaling the twitter streaming reader container is easy:
 
 ```bash
 $ fig scale twitter=4
+```
+
+You can also scale the workers:
+
+```bash
+$ fig scale worker=4
 ```
 
 Watch the messages per second rise!
@@ -51,5 +78,6 @@ Roadmap
 -------
 
  - [x] Pipe Twitter stream to a message queue (`fig up -d twitter`)
- - [ ] Pull from queue and parse data (`fig up worker`)
+ - [x] Pull from queue and parse data (`fig up worker`)
+ - [ ] Extract interesting info, like emoji data, hashtags, links, etc
  - [ ] Graph live data
