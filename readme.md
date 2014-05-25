@@ -74,6 +74,15 @@ $ fig scale worker=4
 
 Watch the messages per second rise!
 
+Tests:
+------
+
+To run the tests just:
+
+```bash
+$ make test
+```
+
 Roadmap
 -------
 
