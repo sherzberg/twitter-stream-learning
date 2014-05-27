@@ -33,7 +33,9 @@ def process_pipeline(data):
 
 def send_to_logstash(data):
     server_address = (os.environ['LOGSTASH_1_PORT_5555_TCP_ADDR'], 5555, )
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(server_address)
-
-    sock.sendall(json.dumps(data))
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect(server_address)
+        sock.sendall(json.dumps(data))
+    finally:
+        sock.close()
