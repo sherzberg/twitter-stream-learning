@@ -21,8 +21,12 @@ class RabbitStreamListener(tweepy.StreamListener):
 
 
 def run():
-    sapi = tweepy.streaming.Stream(auth, RabbitStreamListener())
-    sapi.sample()
+    while True:
+        try:
+            sapi = tweepy.streaming.Stream(auth, RabbitStreamListener())
+            sapi.sample()
+        except:
+            pass
 
 
 if __name__ == '__main__':
