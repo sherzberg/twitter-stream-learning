@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from processors import timestamp
+from processors import timestamp, hashtags
 from datetime import datetime
 import pytz
 
@@ -17,3 +17,22 @@ class TimestampProcessorTest(TestCase):
 
         self.assertTrue('@timestamp' in returned)
         self.assertEqual(returned['@timestamp'], date.isoformat())
+
+
+class HashtagProcessorTest(TestCase):
+
+    def test_single_hashtag(self):
+        data = {'text': 'Hi there! #yolo'}
+
+        returned = hashtags(data)
+
+        self.assertTrue('hashtags' in returned)
+        self.assertEqual([u'yolo'], returned['hashtags'])
+
+    def test_multiple_hashtags(self):
+        data = {'text': 'Hi there! #yolo #anotherone'}
+
+        returned = hashtags(data)
+
+        self.assertTrue('hashtags' in returned)
+        self.assertEqual(set([u'yolo', u'anotherone']), set(returned['hashtags']))

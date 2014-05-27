@@ -3,3 +3,4 @@ celery
 nose
 python-dateutil
 pytz
+https://github.com/dryan/twitter-text-py/archive/master.zip
