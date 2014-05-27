@@ -57,6 +57,9 @@ $ fig up worker
 
 If you refresh the logstash page, you should see lots of messages.
 
+Want a cool preset dashboard of the data? On the logstash dashboard, click _load_, _advanced_, and type `00d5d08deb7a46107772`
+in the gist number field.
+
 Optional scaling:
 -----------------
 
