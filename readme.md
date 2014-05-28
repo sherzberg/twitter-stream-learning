@@ -98,3 +98,4 @@ Roadmap
  - [x] Pull from queue and parse data (`fig up worker`)
  - [ ] Extract interesting info, like emoji data, hashtags, links, etc
  - [ ] Graph live data
+ - [ ] Multi-host container support
