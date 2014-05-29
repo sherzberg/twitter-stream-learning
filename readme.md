@@ -12,7 +12,7 @@ The plan is to use:
  * Tweets with links
  * Tweets with hashtags
  * Tweet emoji
-* One of [Logstash, Graylog, statsd, etc] to do data aggregation and graphing
+* Logstash to do data aggregation and graphing
 
 Requirements:
 -------------
