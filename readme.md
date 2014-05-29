@@ -17,8 +17,8 @@ The plan is to use:
 Requirements:
 -------------
 
-* Docker 0.8.1
-* Fig 0.3.2
+* Docker 0.11.1
+* Fig 0.4.1
 
 This project was created using these versions. It may
 work with newer versions. I'll upgrade when I get a chance.
