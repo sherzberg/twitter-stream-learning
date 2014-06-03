@@ -11,7 +11,7 @@ The plan is to use:
 * Python to parse relevant twitter data
  * Tweets with links
  * Tweets with hashtags
- * Tweet emoji
+ * Tweets emoji
 * Logstash to do data aggregation and graphing
 
 Requirements:
