@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from processors import timestamp, hashtags, urls
+from processors import timestamp, hashtags, urls, domains
 from datetime import datetime
 import pytz
 
@@ -62,3 +62,13 @@ class UrlProcessorTest(TestCase):
 
         self.assertTrue('urls' in returned)
         self.assertEqual(set([u'http://google.com', u'https://another.com']), set(returned['urls']))
+
+
+class DomainProcessorTest(TestCase):
+
+    def test_zero_urls(self):
+        data = {'text': 'Look ma, no urls here!'}
+
+        returned = domains(data)
+
+        self.assertTrue('domains' not in returned)

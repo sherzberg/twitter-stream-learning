@@ -3,7 +3,7 @@ from celery import Celery
 import json
 import socket
 
-from processors import timestamp, hashtags, urls
+from processors import timestamp, hashtags, urls, domains
 
 host = os.environ['RABBIT_1_PORT_5672_TCP_ADDR']
 app = Celery('tasks', broker='amqp://guest:guest@{host}'.format(host=host))
@@ -24,7 +24,7 @@ def process_tweet(message):
 
 def process_pipeline(data):
     blob = {}
-    for function in [timestamp, hashtags, urls]:
+    for function in [timestamp, hashtags, urls, domains]:
         extra = function(data)
         blob = dict(blob.items() + extra.items())
 
