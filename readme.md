@@ -23,6 +23,13 @@ Requirements:
 This project was created using these versions. It may
 work with newer versions. I'll upgrade when I get a chance.
 
+**NOTE**
+
+I have only tested this running this with a full Ubuntu host
+with docker installed. I have no clue if boot2docker or dvm
+will work. Mostly because I always use fully mapped ports
+and shared volumes.
+
 Running
 -------
 
