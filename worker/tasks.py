@@ -2,6 +2,7 @@ import os
 from celery import Celery
 import json
 import socket
+import pika
 
 from processors import timestamp, hashtags, urls, domains
 
@@ -32,10 +33,10 @@ def process_pipeline(data):
 
 
 def send_to_logstash(data):
-    server_address = (os.environ['LOGSTASH_1_PORT_5555_TCP_ADDR'], 5555, )
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect(server_address)
-        sock.sendall(json.dumps(data))
-    finally:
-        sock.close()
+    server_address = os.environ['RABBIT_1_PORT_5672_TCP_ADDR']
+
+    connection = pika.BlockingConnection(pika.ConnectionParameters(server_address))
+    channel = connection.channel()
+    channel.queue_declare(queue='logstash')
+    channel.basic_publish(exchange='', routing_key='logstash', body=json.dumps(data))
+    connection.close()

@@ -1,7 +1,8 @@
 input {
-  tcp {
-    port => 5555
-    codec => 'json'
+  rabbitmq {
+    host => "${RABBIT_1_PORT_5672_TCP_ADDR}"
+    codec => "json"
+    queue => "logstash"
   }
 }
 output {

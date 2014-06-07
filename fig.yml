@@ -28,6 +28,8 @@ rabbit:
 logstash:
   build: logstash/
   command: run
+  links:
+   - rabbit
   volumes:
    - logstash/templates:/opt/templates
   ports:
