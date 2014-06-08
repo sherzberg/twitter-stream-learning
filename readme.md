@@ -103,6 +103,6 @@ Roadmap
 
  - [x] Pipe Twitter stream to a message queue (`fig up -d twitter`)
  - [x] Pull from queue and parse data (`fig up worker`)
- - [ ] Extract interesting info, like emoji data, hashtags, links, etc
- - [ ] Graph live data
+ - [x] Extract interesting info: hashtags, links, domains, etc
+ - [x] Graph live data (kibana, use gist: 00d5d08deb7a46107772)
  - [ ] Multi-host container support
