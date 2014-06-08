@@ -1,11 +1,5 @@
 input {
-  rabbitmq {
-    host => "${RABBIT_1_PORT_5672_TCP_ADDR}"
-    codec => "json"
-    queue => "logstash"
-  }
 }
 output {
   elasticsearch { embedded => true }
-  stdout { codec => rubydebug }
 }
