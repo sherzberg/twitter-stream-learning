@@ -59,7 +59,13 @@ You can view the processed messages by navigating to the logstash [webpage](http
 Now start the workers that process the rabbitmq messages:
 
 ```bash
-$ fig up worker
+$ fig up -d worker
+```
+
+Check the status of the docker containers:
+
+```bash
+$ fig ps
 ```
 
 If you refresh the logstash page, you should see lots of messages.
